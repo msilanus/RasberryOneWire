@@ -10,9 +10,10 @@ Le but de ce mini-projet est de réaliser une centrale de mesure de température
 # Câblage
 
 ![cablage](cablage.png)
+
 http://www.framboise314.fr/mesure-de-temperature-1-wire-ds18b20-avec-le-raspberry-pi/ 
 
-La résistance pourra prendre 4,7k pour valeur.
+La résistance pourra prendre 4,7kOhm pour valeur.
 
 
 # LED verte de la carte Raspberry Pi
@@ -39,16 +40,16 @@ Les drivers du bus 1-wire ne sont pas inclus dans le noyau mais sont présents d
 
 L’installation de se module monte dans le système de fichiers une nouvelle arborescence <code>/sys/bus/w1/devices</code> dans lequel on trouve un dossier portant comme nom l’adresse d’un périphérique connecté au bus 1-wire.  C’est le fichier <code>w1_slave</code> qui contient la température en millième de degrés.
 
-<syntaxhighlight lang="shell">
-/sys/bus/w1/devices $ ls
-28-0000054c2ec2
-/sys/bus/w1/devices $ cd 28-0000054c2ec2
-/sys/bus/w1/devices/28-0000054c2ec2 $ ls
-driver id name power subsystem uevent w1_slave
-/sys/bus/w1/devices/28-0000054c2ec2 $ cat w1_slave
-7c 01 4b 46 7f ff 04 10 09 : crc=09 YES
-7c 01 4b 46 7f ff 04 10 09 t=23750
-</syntaxhighlight>
+
+<code>/sys/bus/w1/devices $ ls</code>
+<code>28-0000054c2ec2</code>
+<code>/sys/bus/w1/devices $ cd 28-0000054c2ec2</code>
+<code>/sys/bus/w1/devices/28-0000054c2ec2 $ ls</code>
+<code>driver id name power subsystem uevent w1_slave</code>
+<code>/sys/bus/w1/devices/28-0000054c2ec2 $ cat w1_slave</code>
+<code>7c 01 4b 46 7f ff 04 10 09 : crc=09 YES</code>
+<code>7c 01 4b 46 7f ff 04 10 09 t=23750</code>
+
 
 # Serveur web et prise en main à distance sécurisée
 
@@ -64,9 +65,9 @@ Vous pourrez utiliser au choix le package dropbear ou openSSH. Dans les deux cas
 
 Le serveur utilise la librairie libwebsockets :
 
-- Include : <source>/usr/include/libwebsockets.h</source>
-- Lib : 	<source>/usr/include/libwebsockets.so</source>, <source>/usr/include/libwebsockets.so.6</source>
-- Exemple de serveur websockets : <source>serveurws.c</source>
+- Include : <code>/usr/include/libwebsockets.h</code>
+- Lib : 	<code>/usr/include/libwebsockets.so</code>, <code>/usr/include/libwebsockets.so.6</code>
+- Exemple de serveur websockets : <code>serveurws.c</code>
 
 
 
